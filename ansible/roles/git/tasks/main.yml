@@ -1,0 +1,7 @@
+---
+- name: Install Git
+  sudo: yes
+  apt: pkg={{ item }} state=latest
+  tags: [packages]
+  with_items:
+    - git
