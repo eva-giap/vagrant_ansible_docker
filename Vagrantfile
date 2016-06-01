@@ -25,10 +25,10 @@ end
 Vagrant.configure("2") do |config|
 
     config.vm.provider :virtualbox do |v|
-        v.name = "vagrant_ansible_docker_wordpress"
+        v.name = "vagrant_ansible_docker"
         v.customize [
             "modifyvm", :id,
-            "--name", "vagrant_ansible_docker_wordpress",
+            "--name", "vagrant_ansible_docker",
             "--memory", 512,
             "--natdnshostresolver1", "on",
             "--cpus", 1,
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
             ansible.limit = 'all'
         end
     else
-        config.vm.provision :shell, path: "ansible/windows.sh", args: ["vagrant_ansible_docker_wordpress"]
+        config.vm.provision :shell, path: "ansible/windows.sh", args: ["vagrant_ansible_docker"]
     end
 
     config.vm.synced_folder "./", "/vagrant", :mount_options  => ['dmode=777,fmode=777']
